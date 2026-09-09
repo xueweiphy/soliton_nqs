@@ -1,0 +1,18 @@
+# scratch and superseded material
+_to_delete/
+_zip_to_delete_*.zip
+*.zip
+# model checkpoints and console logs (regenerate with run_demo.py)
+*.pt
+results/log_*.txt
+results/*.npy
+# project notes (not part of the code release)
+notes/
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# os
+.DS_Store
+# assistant scratch
+Claude outputs/
