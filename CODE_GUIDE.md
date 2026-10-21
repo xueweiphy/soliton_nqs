@@ -224,9 +224,9 @@ This gives an independent, non-numerical-optimisation estimate of the correlatio
 approaching 1 from below with N as a leading-order 1/N theory should.
 
 `check_hartree.py` goes one step further: the softest Bogoliubov mode is the partner of the
-U(1) phase zero mode (the dφ/dN direction), and projecting it out changes the naive depletion
-by a factor ~8. The NQS works at fixed N and never meets this ambiguity. `HARTREE_CHECK.md`
-records the numbers.
+U(1) phase zero mode (the dφ/dN direction). Naive BdG reproduces the exact depletion
+(0.049 vs 0.051 quanta at N = 8); projecting the mode out destroys both depletion and energy.
+The NQS works at fixed N and never meets this choice. `HARTREE_CHECK.md` records the numbers.
 
 ---
 

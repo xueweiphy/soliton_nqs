@@ -47,7 +47,7 @@ Bogoliubov approaches the exact answer from below as N grows, exactly as a leadi
 1/N theory should. So the correlation energy the NQS finds is the standard beyond-mean-field
 effect, at the size analytic theory predicts — it is not a numerical artefact.
 
-## 4. The zero mode shows up here too — and it argues *for* the NQS
+## 4. The zero mode shows up here too
 
 The Bogoliubov spectrum at N = 8 is
 `omega = 1.609, 0.715, 0.365, 0.146, 0.062, 0.045, 0.0221`.
@@ -59,14 +59,15 @@ Its effect on the naive BdG numbers is large:
 
 | quantity | naive BdG (project out phi only) | also project out d(phi)/dN | exact |
 |---|---|---|---|
-| depletion 1 - lambda/N (N=8) | 0.0492 | 0.0009 | **0.0064** |
+| depleted quanta N - lambda (N=8) | 0.0492 | 0.0009 | **0.051** (= 8 x 0.0064) |
 | correlation energy | -1.480e-3 (90% of exact) | -1.106e-4 (7%) | -1.645e-3 |
 
-Naive Bogoliubov overestimates the depletion by a factor of 8 and projecting the mode out
-entirely destroys the energy: the mode needs the proper number-conserving (Castin-Dum)
-treatment, in which it contributes phase diffusion rather than depletion. **The NQS has no
-such ambiguity** — it works at strictly fixed N by construction, so the zero-mode pair never
-enters. That is a real argument for the method, not just a convenience.
+Naive Bogoliubov reproduces the exact depletion (0.049 vs 0.051 quanta), while projecting the
+mode out destroys both the depletion and the energy: the mode must be kept (or treated in the
+number-conserving Castin-Dum form). *Correction (2026-10-21): an earlier version of this note
+compared Sigma |v_k|^2 (quanta) with the exact 1 - lambda/N (a fraction) and reported a
+factor-8 overestimate; that was a unit error.* The NQS works at strictly fixed N, so the
+zero-mode pair never enters -- a convenience, not evidence of higher accuracy.
 
 ## Caveats to state before quoting any of this
 
@@ -77,10 +78,10 @@ enters. That is a real argument for the method, not just a convenience.
   computes the intrinsic energy; this must be said explicitly, because a naive comparison
   with a translation-invariant "exact" calculation would differ by |E|/N.
 * **The 3D correlation energy is not yet validated at the level of the spherical one.**
-  The 3D runs give `N x dE/|E| ~ -0.03` against `-0.09` in the spherical model. That gap is
-  either physical (different discretisation and dimensionality) or an ansatz limitation (the
-  two-body Jastrow reaches only 2 cells). The next check is Bogoliubov *in 3D* as the anchor,
-  plus a Jastrow-range scan.
+  *Correction (2026-10-21): the value `N x dE/|E| ~ -0.03` previously quoted here for the 3D
+  runs is withdrawn. It came from an inconsistency between the sampler and the local energy
+  in the 3D code; with that fixed, the original 3D ansatz finds a shift consistent with zero.*
+  The next check is Bogoliubov *in 3D* as the anchor, plus a Jastrow-range scan.
 
 ## Bottom line
 

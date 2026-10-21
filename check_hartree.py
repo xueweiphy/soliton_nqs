@@ -22,13 +22,14 @@ def bog_proj(lat, phi, N, extra=None):
         if nrm>1e-12: depl+=(v@v)/nrm
     return dE, depl, omega
 
+# depletion columns are all in QUANTA (N - lambda_max for exact, sum |v_k|^2 for BdG)
 print(f"{'N':>4}{'K':>4} {'corr_exact':>11} {'Bog':>11} {'Bog/ex':>7} | {'depl_exact':>10} {'depl_Bog':>9} {'depl_Bog(proj)':>14}")
 for N,K in [(8,8),(12,12)]:
     lat=RadialLattice(N,K); mf=mean_field(lat); ed=exact_ground_state(lat)
     # exact depletion from the OBDM
     from soliton_nqs.dynamics import LatticeED
     led=LatticeED(lat); E0,g0=led.ground_state(); rho,wv,vv=led.obdm(g0)
-    depl_ex=1-wv[0]/N
+    depl_ex=N-wv[0]          # quanta, same units as the BdG sum |v_k|^2
     # dphi/dN by finite difference: re-run the Hartree minimiser with N+2 on the same grid
     from soliton_nqs.meanfield import mean_field as MF
     class Fake: pass
